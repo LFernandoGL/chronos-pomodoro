@@ -26,7 +26,7 @@ label{
 .input:focus{
     padding-left: 0.5rem;
     border-radius: 1.0rem;
-    transform: scale(1.25);
+    transform: scale(1.15);
     box-shadow: 1.2px 1px 5px rgba(13, 161, 112, 0.8);
     border-left: none;
     border-right: none;
