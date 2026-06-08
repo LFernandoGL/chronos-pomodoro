@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 1.0rem;
 }
 
 .cycleDot{
@@ -21,6 +21,16 @@
 .workTime{
     background: var(--warning);
 }
+
+.shortBreakTime{
+    background-color: var(--primary);
+}
+
+.longBreakTime{
+    background-color: var(--info);
+}
+
+
 
 .lorem{
     margin-top: 15px;

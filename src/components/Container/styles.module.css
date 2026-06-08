@@ -1,9 +1,14 @@
 .container{
     max-width: 98rem;
     margin: 0 auto;
+
 }
 
 .content {
     margin: 3.2rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

@@ -8,22 +8,17 @@ import { Menu } from './components/Menu/Index';
 import { CountDown } from './components/CountDown/Index';
 import { Input } from './components/Input/Index';
 import { Cycles } from './components/Cycles/Index';
-import { useState } from 'react';
-import { Heading } from './components/Heading/Index';
+import { DefaultButton } from './components/DefaultButton/Index';
+import { PlayCircleIcon } from 'lucide-react';
+import { Footer } from './components/Footer/Index';
 
 
 
 export function App(){
-    const [numero, configurarNumero] = useState(0);
-
-    function handleClick(){
-        configurarNumero(numero + 1);
-    }
+    
 
     return (
         <>
-            <Heading>{numero}</Heading>
-            <button onClick={handleClick}>Aumentar</button>
             <Container>
                 <Logo/>
             </Container>
@@ -38,13 +33,22 @@ export function App(){
 
             <Container>
                 <form>
-                    <Input labelText={numero.toString()} type='text'/>
+                    <Input type='text'/>
+                    
+                    <Container>
+                        <Cycles/>
+                    </Container>
+
+                    <Container>
+                        <DefaultButton icon={<PlayCircleIcon/>} color='green'/>
+                    </Container>
                 </form>
             </Container>
-
             <Container>
-                <Cycles/>
+                <Footer/>
             </Container>
+
+            
 
         </>
     );
