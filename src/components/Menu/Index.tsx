@@ -1,54 +1,82 @@
-import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from 'lucide-react';
-import styles from './styles.module.css';
-import { useEffect, useState } from 'react';
+import {
+  HistoryIcon,
+  HouseIcon,
+  MoonIcon,
+  SettingsIcon,
+  SunIcon,
+} from "lucide-react";
+import styles from "./styles.module.css";
+import { useEffect, useState } from "react";
 
-type AvailableThemes = 'dark' | 'light'
+type AvailableThemes = "dark" | "light";
 
-export function Menu(){
+export function Menu() {
+  const [themes, setThemes] = useState<AvailableThemes>(() => {
+    const storageTheme = localStorage.getItem("theme") as
+      | AvailableThemes
+      | "dark";
+    return storageTheme;
+  });
 
-    const [themes, setThemes] = useState<AvailableThemes>('dark');
+  const nextThemeIcon = {
+    dark: <SunIcon />,
+    light: <MoonIcon />,
+  };
 
-    function handleThemeChangeClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>){
-        console.log('Clicado', Date.now());
+  function handleThemeChangeClick(
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) {
+    event.preventDefault();
 
-        event.preventDefault();
+    setThemes((prevTheme) => {
+      const nextTheme = prevTheme === "dark" ? "light" : "dark";
+      return nextTheme;
+    });
+  }
 
-        setThemes(prevTheme => {
-            const nextTheme = prevTheme === 'dark' ? 'light': 'dark';
-            return nextTheme;
-        })
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", themes);
+    localStorage.setItem("theme", themes);
+  }, [themes]);
 
-        
-    }
+  return (
+    <nav className={styles.menu}>
+      <a
+        className={styles.icon}
+        href="#"
+        aria-label="Ir para Home"
+        title="Ir para Home"
+      >
+        <HouseIcon />
+      </a>
 
-    useEffect( () =>{
-        document.documentElement.setAttribute('data-theme', themes);
-    },[themes]);
+      <a
+        className={styles.icon}
+        href="#"
+        aria-label="Ir para Historico"
+        title="Ir para Historico"
+      >
+        <HistoryIcon />
+      </a>
 
+      <a
+        className={styles.icon}
+        href="#"
+        aria-label="Ir para Configuracoes"
+        title="Ir para Configuracoes"
+      >
+        <SettingsIcon />
+      </a>
 
-    return(
-        
-        <nav className={styles.menu}>
-            
-
-
-            <a className={styles.icon} href="#" aria-label='Ir para Home' title='Ir para Home'>
-                <HouseIcon/>
-            </a>
-
-            <a className={styles.icon} href="#"  aria-label='Ir para Historico' title='Ir para Historico'>
-                <HistoryIcon/>
-            </a>
-
-            <a className={styles.icon} href="#"  aria-label='Ir para Configuracoes' title='Ir para Configuracoes'>
-                <SettingsIcon/>
-            </a>
-
-            <a className={styles.icon} href="#" aria-label='Trocar tema' title='Trocar tema' onClick={handleThemeChangeClick}>
-                <SunIcon/>
-            </a>
-
-           
-        </nav>
-    )
+      <a
+        className={styles.icon}
+        href="#"
+        aria-label="Trocar tema"
+        title="Trocar tema"
+        onClick={handleThemeChangeClick}
+      >
+        {nextThemeIcon[themes]}
+      </a>
+    </nav>
+  );
 }
