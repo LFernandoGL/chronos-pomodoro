@@ -4,25 +4,25 @@ import { Menu } from "../../components/Menu/Index";
 import { Footer } from "../../components/Footer/Index";
 
 type templateProps = {
-  children: React.ReactNode;
+    children: React.ReactNode;
 };
 
 export function MainTemplate({ children }: templateProps) {
-  return (
-    <>
-      <Container>
-        <Logo />
-      </Container>
+    return (
+        <>
+            <Container>
+                <Logo />
+            </Container>
 
-      <Container>
-        <Menu />
-      </Container>
+            <Container>
+                <Menu />
+            </Container>
 
-      {children}
+            {children}
 
-      <Container>
-        <Footer />
-      </Container>
-    </>
-  );
+            <Container>
+                <Footer />
+            </Container>
+        </>
+    );
 }
