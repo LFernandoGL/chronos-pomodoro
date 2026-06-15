@@ -1,8 +1,13 @@
 import "./styles/theme.css";
 import "./styles/global.css";
 
-import { NotFound } from "./pages/NotFound/Index";
+import { Home } from "./pages/Home/Index";
+import { TaskContextProvider } from "./contexts/TaskContext/TaskContextProvider";
 
 export function App() {
-   return <NotFound />;
+   return (
+      <TaskContextProvider>
+         <Home />
+      </TaskContextProvider>
+   );
 }

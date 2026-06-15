@@ -1,34 +1,35 @@
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2.5rem;
+.container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 2.5rem;
 }
 
-label{
-    font-size: 1.7rem;
+label {
+   font-size: 1.7rem;
 }
 
-.input{
-    background: transparent;
-    border: transparent;
-    border-bottom: 1px solid var(--primary);
-    outline: none;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    width: 20rem;
-    height: 2.4rem;
-    padding-bottom: 0.5rem;
-    transition: transform 0.3s ease-in-out;
+.input {
+   background: transparent;
+   border: transparent;
+   border-bottom: 1px solid var(--primary);
+   outline: none;
+   color: white;
+   font-family: "Inter", sans-serif;
+   width: 20rem;
+   height: 2.4rem;
+   padding-bottom: 0.5rem;
+   transition: transform 0.3s ease-in-out;
+   text-align: center;
 }
 
-.input:focus{
-    padding-left: 0.5rem;
-    border-radius: 1.0rem;
-    transform: scale(1.15);
-    box-shadow: 1.2px 1px 5px rgba(13, 161, 112, 0.8);
-    border-left: none;
-    border-right: none;
-    border-top: 0.5rem;
+.input:focus {
+   padding-left: 0.5rem;
+   border-radius: 1rem;
+   transform: scale(1.15);
+   box-shadow: 1.2px 1px 5px rgba(13, 161, 112, 0.8);
+   border-left: none;
+   border-right: none;
+   border-top: 0.5rem;
 }

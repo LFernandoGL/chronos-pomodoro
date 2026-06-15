@@ -3,19 +3,31 @@ import { Container } from "../Container/Index";
 import { Cycles } from "../Cycles/Index";
 import { DefaultButton } from "../DefaultButton/Index";
 import { Input } from "../Input/Index";
+import { useState } from "react";
 
 export function MainForm() {
-  return (
-    <form>
-      <Input type="text" />
+   const [taskName, setTaskName] = useState("");
 
-      <Container>
-        <Cycles />
-      </Container>
+   function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>) {
+      event.preventDefault();
+      console.log("Deu certo" + taskName);
+   }
 
-      <Container>
-        <DefaultButton icon={<PlayCircleIcon />} color="green" />
-      </Container>
-    </form>
-  );
+   return (
+      <form onSubmit={handleCreateNewTask}>
+         <Input
+            type="text"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+         />
+
+         <Container>
+            <Cycles />
+         </Container>
+
+         <Container>
+            <DefaultButton icon={<PlayCircleIcon />} color="green" />
+         </Container>
+      </form>
+   );
 }

@@ -1,10 +1,8 @@
-import styles from './styles.module.css'
+import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
+import styles from "./styles.module.css";
 
-
-export function CountDown(){
-    return(
-        <div className={styles.countDown}>
-            00:00
-        </div>
-    )
+export function CountDown() {
+   const taskContext = useTaskContext();
+   console.log(taskContext);
+   return <div className={styles.countDown}>00:00</div>;
 }
