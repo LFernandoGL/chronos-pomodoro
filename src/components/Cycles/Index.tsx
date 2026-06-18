@@ -1,19 +1,30 @@
-import styles from './styles.module.css';
+import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
+import { getNextCycle } from "../../Utils/GetNextCycle";
+import { getNextCycleType } from "../../Utils/GetNextCycleType";
+import styles from "./styles.module.css";
 
-export function Cycles(){
-    return (
-        <div className={styles.cycles}>
-            <span className={styles.lorem}>Lorem ipsum dolor sit amet. asaaiu sghgsgy lapsolj</span>
-            <span>Ciclos</span>
+export function Cycles() {
+   const { state } = useTaskContext();
 
-             <div className={styles.cycleDots}>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-                <span className={`${styles.cycleDot} ${styles.workTime}`}></span>
-             </div>
-        </div>
-    )
+   const cycleSteps = Array.from({ length: state.currentCycle });
+
+   return (
+      <div className={styles.cycles}>
+         <span>Ciclos</span>
+
+         <div className={styles.cycleDots}>
+            {cycleSteps.map((_, index) => {
+               const nextCycle = getNextCycle(index);
+               const nextCycleType = getNextCycleType(nextCycle);
+
+               return (
+                  <span
+                     key={nextCycle}
+                     className={`${styles.cycleDot} ${styles[nextCycleType]}`}
+                  ></span>
+               );
+            })}
+         </div>
+      </div>
+   );
 }
